@@ -1,8 +1,8 @@
 # Set path ---------------------------------------------------------------------
 if(Sys.info()["sysname"] == "Windows"){
-  filepath_base = "E:/modis_carpathian_mountains/"
+  filepath_base = "C:/Users/tnauss/permanent/plygrnd/forest_russia/"
 } else {
-  filepath_base = "/mnt/sd19006/data/processing_data/modis_carpathian_mountains/"
+  filepath_base = "/mnt/sd19006/data/processing_data/modis_russia/"
 }
 
 # Basic data path
@@ -41,7 +41,7 @@ path_proj = paste0(path_data, "/projection/")
 
 
 # Set libraries ----------------------------------------------------------------
-library(beechForestDynamics)
+# library(beechForestDynamics)
 library(doParallel)
 library(GSODTools)
 library(gimms)

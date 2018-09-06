@@ -1,5 +1,5 @@
 #source("E:/modis_carpathian_mountains/src/00_set_environment.R")
-source("/mnt/sd19006/data/processing_data/modis_carpathian_mountains/src/00_set_environment.R")
+source("/mnt/sd19006/data/processing_data/modis_russia/src/00_set_environment.R")
 
 
 lap = path_modis_arc
@@ -13,7 +13,8 @@ MODISoptions(localArcPath = lap
 clc = getCollection("MYD13Q1") 
 # tls = getTile() 
 
-shp = shapefile(paste0(path_vectors, "carpathian_mountains.shp"))
+print(paste0(path_vectors, "/modis_russia.shp"))
+shp = shapefile(paste0(path_vectors, "/modis_russia.shp"))
 shp = spTransform(shp, CRS("+proj=sinu +lon_0=0 +x_0=0 +y_0=0 +a=6371007.181 +b=6371007.181 +units=m +no_defs"))
 # mapview::mapview(shp)
 
@@ -27,6 +28,7 @@ shp = spTransform(shp, CRS("+proj=sinu +lon_0=0 +x_0=0 +y_0=0 +a=6371007.181 +b=
 # sds 
 
 # ?runGdal 
+MODISoptions(MODISserverOrder = c("LPDAAC", "LAADS"))
 tfs = runGdal("MYD13Q1" 
               , collection = clc 
               , begin = as.Date("2001-12-01") 
@@ -34,7 +36,7 @@ tfs = runGdal("MYD13Q1"
               # , tileH = 19, tileV = 4 
               , extent = shp
               , SDSstring = "101000000011" 
-              , job = "carpathian_mountains") 
+              , job = "modis_russia") 
 tfs 
 
 
